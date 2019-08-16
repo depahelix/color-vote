@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thanks!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- https://stackoverflow.com/questions/25687806/setting-up-a-javascript-variable-from-spring-model-by-using-thymeleaf -->
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var selectedColor = /*[[${favoriteColor}]]*/ 'Thank you';
+
+        function jsUcfirst(string)
+        {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+        var selectedColorFirstUC = jsUcfirst(selectedColor);
+
+        window.onload = function() {
+
+            function getChart(white,silver,gray,black,red,maroon,yellow,olive,lime,green,aqua,teal,blue,navy,fuchsia,purple) {
+                return new CanvasJS.Chart("chartContainer", {
+                    animationEnabled: false,
+                    title: {
+                        fontColor: "#fff",
+                        text: "You voted for: " + selectedColorFirstUC
+                    },
+                    legend : {
+                        fontColor: "#0f0",
+                    },
+
+                    backgroundColor: "#333",
+                    data: [{
+                        type: "pie",
+                        startAngle: 240,
+                        yValueFormatString: "##0.00\"%\"",
+                        indexLabel: "{label} {y}",
+                        lineColor: "#FFFFFF",
+                        dataPoints: [
+                            {y: white, label: "White", color: "#FFFFFF", indexLabelFontColor: "#FFFFFF", indexLabelLineColor: "#FFFFFF"},
+                            {y: silver, label: "Silver", color: "#C0C0C0", indexLabelFontColor: "#FFFFFF", indexLabelLineColor: "#FFFFFF"},
+                            {y: gray, label: "Gray", color: "#808080", indexLabelFontColor: "#FFFFFF", indexLabelLineColor: "#FFFFFF"},
+                            {y: black, label: "Black", color: "#000000", indexLabelFontColor: "#FFFFFF", indexLabelLineColor: "#FFFFFF"},
+                            {y: red, label: "Red", color: "#FF0000", indexLabelFontColor: "#FFFFFF", indexLabelLineColor: "#FFFFFF"},
+                            {y: maroon, label: "Maroon", color: "#800000", indexLabelFontColor: "#FFFFFF", indexLabelLineColor: "#FFFFFF"},
+                            {y: yellow, label: "Yellow", color: "#FFFF00", indexLabelFontColor: "#FFFFFF", indexLabelLineColor: "#FFFFFF"},
+                            {y: olive, label: "Olive", color: "#808000", indexLabelFontColor: "#FFFFFF", indexLabelLineColor: "#FFFFFF"},
+                            {y: lime, label: "Lime", color: "#00FF00", indexLabelFontColor: "#FFFFFF", indexLabelLineColor: "#FFFFFF"},
+                            {y: green, label: "Green", color: "#008000", indexLabelFontColor: "#FFFFFF", indexLabelLineColor: "#FFFFFF"},
+                            {y: aqua, label: "Aqua", color: "#00FFFF", indexLabelFontColor: "#FFFFFF", indexLabelLineColor: "#FFFFFF"},
+                            {y: teal, label: "Teal", color: "#008080", indexLabelFontColor: "#FFFFFF", indexLabelLineColor: "#FFFFFF"},
+                            {y: blue, label: "Blue", color: "#0000FF", indexLabelFontColor: "#FFFFFF", indexLabelLineColor: "#FFFFFF"},
+                            {y: navy, label: "Navy", color: "#000080", indexLabelFontColor: "#FFFFFF", indexLabelLineColor: "#FFFFFF"},
+                            {y: fuchsia, label: "Fuchsia", color: "#FF00FF", indexLabelFontColor: "#FFFFFF", indexLabelLineColor: "#FFFFFF"},
+                            {y: purple, label: "Purple", color: "#800080", indexLabelFontColor: "#FFFFFF", indexLabelLineColor: "#FFFFFF"},
+                        ]
+                    }]
+                });
+            }
+
+            function reload() {
+                //x = Math.random() * 50;
+                var white = /*[[${white}]]*/ 0;
+                var silver = /*[[${silver}]]*/ 0;
+                var gray = /*[[${gray}]]*/ 0;
+                var black = /*[[${black}]]*/ 0;
+                var red = /*[[${red}]]*/ 0;
+                var maroon = /*[[${maroon}]]*/ 0;
+                var yellow = /*[[${yellow}]]*/ 0;
+                var olive = /*[[${olive}]]*/ 0;
+                var lime = /*[[${lime}]]*/ 0;
+                var green = /*[[${green}]]*/ 0;
+                var aqua = /*[[${aqua}]]*/ 0;
+                var teal = /*[[${teal}]]*/ 0;
+                var blue = /*[[${blue}]]*/ 0;
+                var navy = /*[[${navy}]]*/ 0;
+                var fuchsia = /*[[${fuchsia}]]*/ 0;
+                var purple = /*[[${purple}]]*/ 0;
+                var chart = getChart(white,silver,gray,black,red,maroon,yellow,olive,lime,green,aqua,teal,blue,navy,fuchsia,purple);
+                chart.render();
+            }
+
+            var interval = setInterval(function() {
+                reload();
+            }, 1500);
+
+        }
+        /*]]>*/
+    </script>
+</head>
+<body bgcolor="#333" style="align:center;">
+<div id="chartContainer" style="height: 370px; width: 000%; align:center;width:100%;" ></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thanks!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+    <body>
+        <div align="center">
+            <p th:text="'To be sure, ' + ${favoriteColor} + ' is indeed a lovely color, but it is not a valid color to vote for today!'" />
+            <a href="/">OK, fine, let me try again.</a>
+        </div>
+    </body>
+</html>
