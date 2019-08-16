@@ -79,9 +79,11 @@
                 chart.render();
             }
 
+	    reload();
+
             var interval = setInterval(function() {
-                reload();
-            }, 1500);
+                location.reload();
+            }, 5000);
 
         }
         /*]]>*/
@@ -89,6 +91,9 @@
 </head>
 <body bgcolor="#333" style="align:center;">
 <div id="chartContainer" style="height: 370px; width: 000%; align:center;width:100%;" ></div>
+<div>
+<span style="color:white;">This is Chris Morley's submission for Chewy's Hackathon 8/15 &amp; 8/16 2019</span>
+</div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 </html>
